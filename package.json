@@ -1,0 +1,39 @@
+{
+  "name": "api-currency",
+  "description": "API currency",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "scripts": {
+    "build": "./node_modules/.bin/babel ./src -d dist",
+    "start": "node dist/server",
+    "dev": "./node_modules/.bin/nodemon ./dist/server",
+    "lint": "./node_modules/.bin/eslint .",
+    "docker:build": "yarn build && docker build -t garciadiazjaime/api-currency .",
+    "docker:run": "docker run -d -p 49360:80 -e 'API_URL=http://0.0.0.0:3060/' --name currency garciadiazjaime/api-currency",
+    "docker:push": "docker push garciadiazjaime/api-currency",
+    "docker:pull": "docker pull garciadiazjaime/api-currency",
+    "test": "jest tests"
+  },
+  "dependencies": {
+    "convict": "^4.2.0",
+    "mongoose": "^5.1.1",
+    "mongoose-string-query": "^0.2.5",
+    "mongoose-timestamp": "^0.6.0",
+    "morgan": "^1.9.0",
+    "restify": "^7.1.2",
+    "restify-errors": "^6.0.0",
+    "restify-plugins": "^1.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "jest": "^22.4.3",
+    "nodemon": "^1.17.4"
+  }
+}
