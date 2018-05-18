@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`routes makes expected calls 1`] = `
+Array [
+  Array [
+    "/rates",
+    [Function],
+  ],
+  Array [
+    "/rates/usdmxn",
+    [Function],
+  ],
+]
+`;
+
+exports[`routes makes expected calls 2`] = `
+Array [
+  Array [
+    "/rates",
+    [Function],
+  ],
+  Array [
+    "/rates/usdmxn",
+    [Function],
+  ],
+]
+`;

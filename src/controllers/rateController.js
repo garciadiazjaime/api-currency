@@ -4,7 +4,6 @@ import Rate from '../models/rate';
 function list(req, res, next) {
   Rate.apiQuery(req.params, (err, docs) => {
     if (err) {
-      console.error(err);
       return next(new errors.InvalidContentError(err.errors.name.message));
     }
 
@@ -20,6 +19,10 @@ function save(req, res, next) {
 
   const { data } = req.body || [];
 
+  if (!data || !data.length) {
+    return next(new errors.InvalidContentError('no data sent'));
+  }
+
   const promises = data.map((item) => {
     const entity = new Rate({
       currency: item.currency,
@@ -29,7 +32,7 @@ function save(req, res, next) {
   });
 
   return Promise.all(promises).then((results) => {
-    res.send(results).status(201);
+    res.send(results);
     next();
   });
 }

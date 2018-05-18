@@ -8,7 +8,7 @@
   "scripts": {
     "build": "./node_modules/.bin/babel ./src -d dist",
     "start": "node dist/server",
-    "dev": "./node_modules/.bin/nodemon ./dist/server",
+    "dev": "yarn build -- --watch & ./node_modules/.bin/nodemon ./dist/server",
     "lint": "./node_modules/.bin/eslint .",
     "docker:build": "yarn build && docker build -t garciadiazjaime/api-currency .",
     "docker:run": "docker run -d -p 49360:80 -e 'API_URL=http://0.0.0.0:3060/' --name currency garciadiazjaime/api-currency",
