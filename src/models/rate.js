@@ -11,6 +11,10 @@ const RateSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  type: {
+    type: Boolean,
+    required: true,
+  },
 }, {
   minimize: false,
 });

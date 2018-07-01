@@ -27,6 +27,7 @@ function save(req, res, next) {
     const entity = new Rate({
       currency: item.currency,
       rate: item.rate,
+      type: item.type,
     });
     return entity.save();
   });
