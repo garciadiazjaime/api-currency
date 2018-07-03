@@ -38,6 +38,15 @@ Sources
 ### Development Reference
 - [rest-api-node-js-restify-mongodb](https://getstream.io/blog/building-rest-api-node-js-restify-mongodb/)
 
+### Docker commands
+
+```
+docker build -t garciadiazjaime/api-currency .
+docker run -d -p 49192:3030 garciadiazjaime/api-currency
+docker push garciadiazjaime/api-currency
+docker pull garciadiazjaime/api-currency
+```
+
 
 How to contribute
 ----

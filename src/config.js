@@ -23,13 +23,13 @@ const config = convict({
   port: {
     doc: 'Application Port.',
     format: 'port',
-    default: 3000,
+    default: 3030,
     env: 'PORT',
   },
   ip: {
     doc: 'Application IP.',
     format: 'ipaddress',
-    default: '127.0.0.1',
+    default: '0.0.0.0',
     env: 'IP',
   },
   dbUrl: {
