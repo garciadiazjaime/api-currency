@@ -1,27 +1,18 @@
-import restify from 'restify';
-import restifyPlugins from 'restify-plugins';
+import express from 'express';
+import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 
 import config from './config';
 import routes from './routes';
 
-const server = restify.createServer({
-  name: config.get('name'),
-  version: config.get('version'),
-});
+const app = express();
 
-server.use(restifyPlugins.jsonBodyParser({
-  mapParams: true,
-}));
-server.use(restifyPlugins.acceptParser(server.acceptable));
-server.use(restifyPlugins.queryParser({
-  mapParams: true,
-}));
-server.use(restifyPlugins.fullResponse());
-server.use(morgan('tiny'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(morgan('tiny'));
 
-server.listen(config.get('port'), () => {
+app.listen(config.get('port'), config.get('ip'), () => {
   mongoose.Promise = global.Promise;
   mongoose.connect(config.get('dbUrl'));
 
@@ -33,7 +24,7 @@ server.listen(config.get('port'), () => {
   });
 
   db.once('open', () => {
-    routes(server);
-    console.log('%s listening at %s', server.name, server.url);
+    console.log(`Express Running ${config.get('ip')}:${config.get('port')}`);
+    app.use('/', routes);
   });
 });

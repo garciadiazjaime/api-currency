@@ -12,6 +12,6 @@ ADD . /usr/src/app
 
 RUN cd /usr/src/app && npm run build
 
-EXPOSE 3030
+EXPOSE 3000
 
 CMD [ "node", "./dist/server.js" ]

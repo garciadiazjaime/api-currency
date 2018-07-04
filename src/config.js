@@ -23,7 +23,7 @@ const config = convict({
   port: {
     doc: 'Application Port.',
     format: 'port',
-    default: 3030,
+    default: 3000,
     env: 'PORT',
   },
   ip: {
